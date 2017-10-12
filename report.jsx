@@ -33,16 +33,18 @@ module.exports = createReactClass({
     value: function(memo) { return (memo.load*100) / memo.impression },
     template: function(val, row) { return val.toFixed(2) }},
     {title: 'Display Rate',
-    value: function(memo) { return (memo.display*100) / memo.impression },
-    template: function(val, row) { return val.toFixed(2) }},
+    value: function(memo) { return (memo.display*100) / memo.load },
+    template: function(val, row) { return val.toFixed(1) }},
     ]
     return (
     <div>Report
-      <div>
+      <div class="#table">
     <ReactPivot rows={rows}
               dimensions={dimensions}
               reduce={reduce}
-              calculations={calculations} />
+              calculations={calculations} 
+              sortBy={'Display Rate'}
+              sortDir="desc"/>
               </div>
               </div>
   );
